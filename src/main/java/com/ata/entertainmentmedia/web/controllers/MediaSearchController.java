@@ -1,0 +1,13 @@
+package com.ata.entertainmentmedia.web.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("search")
+public class MediaSearchController {
+
+    /*public List<Media> returnMediaList() {
+        return
+    }*/
+}
