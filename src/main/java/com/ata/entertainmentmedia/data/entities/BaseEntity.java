@@ -16,6 +16,7 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movies_generator")
     @SequenceGenerator(name = "movies_generator", sequenceName = "movies_seq", allocationSize = 1)
+    //@Column(name = "movie_id")
     private Long id;
 
     private LocalDate createdDate = LocalDate.now();

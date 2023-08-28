@@ -1,15 +1,17 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 
 @Entity
 @Table(name = "movies")
+//@AttributeOverride(name = "id", column = @Column(name = "movie_id"))
+// ^? -> IN ORDER TO RELATE TO A COLUMN NAMED movie_id INSTEAD IF id
+//IT STILL RETURNS id AS THE JSON KEY not movie_id -> (id : 4)
+//THIS COULD BE DONE WITH JUST THE @COLUMN PROPERTY ON BASE CLASS(IS THERE A DIFFERENCE OTHER THAN THE LEVEL IT'S DONE)
 public class Movie extends Media{
 
 
@@ -20,13 +22,11 @@ public class Movie extends Media{
     ///////////// CONSTRUCTORS //////////////
 
 
-    public Movie(Long id, LocalDate createdDate, String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId, Integer length) {
-        super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
-        this.length = length;
-    }
+    public Movie(Long id, LocalDate createdDate,
+                 String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
+                 Integer length) {
 
-    public Movie(String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId, Integer length) {
-        super(name, rating, publishedDate, thumbnailId, genreId);
+        super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
         this.length = length;
     }
 
@@ -36,8 +36,6 @@ public class Movie extends Media{
 
 
     ///////////// OTHER //////////////
-
-
 
     public Integer getLength() {
         return length;
