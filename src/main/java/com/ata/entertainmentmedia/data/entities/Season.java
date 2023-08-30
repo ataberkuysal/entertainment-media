@@ -1,6 +1,5 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -26,12 +25,13 @@ public class Season extends Media implements Serializable {
     ////////// CONSTRUCTORS //////////
 
 
-    public Season(Long id, LocalDate createdDate,
+    public Season(LocalDate createdDate,
                   String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                  Integer episodeCount, Long seasonId, Serie serie, List<Episode> episodes) {
+                  Integer episodeCount, Long seasonId, Serie serie, Long id, List<Episode> episodes) {
 
         super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
         this.episodeCount = episodeCount;
+        this.id = id;
         this.episodes = episodes;
     }
 
@@ -59,4 +59,11 @@ public class Season extends Media implements Serializable {
         this.episodes = episodes;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

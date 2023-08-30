@@ -1,6 +1,5 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,11 +20,12 @@ public class Episode extends Media implements Serializable {
     //////   CONSTRUCTORS /////////
 
 
-    public Episode(Long id, LocalDate createdDate,
+    public Episode(LocalDate createdDate,
                    String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                   Integer length) {
+                   Long id, Integer length) {
 
         super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        this.id = id;
         this.length = length;
     }
 
@@ -46,4 +46,11 @@ public class Episode extends Media implements Serializable {
         return this.length;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

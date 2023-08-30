@@ -6,16 +6,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@IdClass(SerieId.class)
+
 @Entity
 @Table(name = "series", uniqueConstraints={@UniqueConstraint(columnNames={"serie_id"})})
 public class Serie extends Media implements Serializable {
 
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "serie_id", unique = true)
-    private Long serieId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "series_generator")
+    @SequenceGenerator(name = "series_generator", sequenceName = "series_seq", allocationSize = 1)
+    private Long id;
 
     private Integer seasonCount;
 
@@ -32,12 +32,13 @@ public class Serie extends Media implements Serializable {
     ///////// CONSTRUCTORS //////////
 
 
-    public Serie(Long id, LocalDate createdDate,
+    public Serie(LocalDate createdDate,
                  String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                 Long serieId, Integer seasonCount, List<Season> seasons, Integer totalEpisodeCount) {
+                 Long serieId, Long id, Integer seasonCount, List<Season> seasons, Integer totalEpisodeCount) {
 
-        super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
-        this.serieId = serieId;
+        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        this.id = id;
+
 
         this.seasonCount = seasonCount;
         this.seasons = seasons;
@@ -76,11 +77,11 @@ public class Serie extends Media implements Serializable {
         this.seasons = seasons;
     }
 
-    public Long getSerieId() {
-        return serieId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSerieId(Long serieId) {
-        this.serieId = serieId;
+    public void setId(Long id) {
+        this.id = id;
     }
 }
