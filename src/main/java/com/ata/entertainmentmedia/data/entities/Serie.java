@@ -1,47 +1,32 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@IdClass(SerieId.class)
 @Entity
-@Table(name = "series", uniqueConstraints={@UniqueConstraint(columnNames={"serie_id"})})
-public class Serie extends Media implements Serializable {
+@Table(name = "series")
+public class Serie extends Media{
 
+    private List<Episode> episodes;
 
-    @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "serie_id", unique = true)
-    private Long serieId;
+    private Integer season_count;
 
-    private Integer seasonCount;
-
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JsonIgnore
-    //@ToString.Exclude
-    //@Column(name = "seasons")
-    private List<Season> seasons;
-
-    @Column(name = "total_episode_count")
-    private Integer totalEpisodeCount;
-
+    private Integer episode_count;
 
     ///////// CONSTRUCTORS //////////
 
 
     public Serie(Long id, LocalDate createdDate,
                  String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                 Long serieId, Integer seasonCount, List<Season> seasons, Integer totalEpisodeCount) {
+                 List<Episode> episodes, Integer season_count, Integer episode_count) {
 
         super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
-        this.serieId = serieId;
-
-        this.seasonCount = seasonCount;
-        this.seasons = seasons;
-        this.totalEpisodeCount = totalEpisodeCount;
+        this.episodes = episodes;
+        this.season_count = season_count;
+        this.episode_count = episode_count;
     }
 
     public Serie() {
@@ -51,36 +36,27 @@ public class Serie extends Media implements Serializable {
     ////////// OTHER /////////////////
 
 
+    public List<Episode> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(List<Episode> episodes) {
+        this.episodes = episodes;
+    }
 
     public Integer getSeason_count() {
-        return seasonCount;
+        return season_count;
     }
 
-    public void setSeason_count(Integer seasonCount) {
-        this.seasonCount = seasonCount;
+    public void setSeason_count(Integer season_count) {
+        this.season_count = season_count;
     }
 
-    public Integer getTotalEpisodeCount() {
-        return totalEpisodeCount;
+    public Integer getEpisode_count() {
+        return episode_count;
     }
 
-    public void setTotalEpisodeCount(Integer totalEpisodeCount) {
-        this.totalEpisodeCount = totalEpisodeCount;
-    }
-
-    public List<Season> getSeason() {
-        return seasons;
-    }
-
-    public void setSeason(List<Season> seasons) {
-        this.seasons = seasons;
-    }
-
-    public Long getSerieId() {
-        return serieId;
-    }
-
-    public void setSerieId(Long serieId) {
-        this.serieId = serieId;
+    public void setEpisode_count(Integer episode_count) {
+        this.episode_count = episode_count;
     }
 }

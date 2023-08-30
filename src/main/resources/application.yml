@@ -11,13 +11,3 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: update
         default-schema: public
-
-    show-sql: true
-
-    generate-ddl: true
-
-springdoc:
-  api-docs:
-    enabled: true
-  path: /swagger-ui.html
-

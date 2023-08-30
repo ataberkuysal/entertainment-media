@@ -1,32 +1,25 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "episodes")
-public class Episode extends Media implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "episodes_generator")
-    @SequenceGenerator(name = "episodes_generator", sequenceName = "episodes_seq", allocationSize = 1)
-    private Long id;
+public class Episode extends Media{
 
     private Integer length;
 
-
     //////   CONSTRUCTORS /////////
-
 
     public Episode(Long id, LocalDate createdDate,
                    String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                   Integer length) {
+                    Integer length) {
 
-        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
         this.length = length;
+
     }
 
     public Episode() {
@@ -45,5 +38,4 @@ public class Episode extends Media implements Serializable {
 
         return this.length;
     }
-
 }
