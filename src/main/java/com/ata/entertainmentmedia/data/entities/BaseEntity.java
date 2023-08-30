@@ -13,17 +13,11 @@ import java.time.LocalDate;
 @MappedSuperclass
 public abstract class BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movies_generator")
-    @SequenceGenerator(name = "movies_generator", sequenceName = "movies_seq", allocationSize = 1)
-    //@Column(name = "movie_id")
-    private Long id;
-
     private LocalDate createdDate = LocalDate.now();
 
     ///////////// CONSTRUCTORS /////////////
-    public BaseEntity(Long id, LocalDate createdDate) {
-        this.id = id;
+    public BaseEntity(LocalDate createdDate) {
+
         this.createdDate = createdDate;
     }
     public BaseEntity() {
@@ -32,10 +26,6 @@ public abstract class BaseEntity {
 
     ///////////// OTHER ///////////////
 
-
-    public Long getId() {
-        return id;
-    }
 
     public LocalDate getCreatedDate() {
         return createdDate;

@@ -1,6 +1,5 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -14,6 +13,10 @@ import java.time.LocalDate;
 //THIS COULD BE DONE WITH JUST THE @COLUMN PROPERTY ON BASE CLASS(IS THERE A DIFFERENCE OTHER THAN THE LEVEL IT'S DONE)
 public class Movie extends Media{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movies_generator")
+    @SequenceGenerator(name = "movies_generator", sequenceName = "movies_seq", allocationSize = 1)
+    private Long id;
 
     private Integer length;
 
@@ -24,9 +27,10 @@ public class Movie extends Media{
 
     public Movie(Long id, LocalDate createdDate,
                  String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                 Integer length) {
+                 Long id1, Integer length) {
 
-        super(id, createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        this.id = id;
         this.length = length;
     }
 
@@ -43,5 +47,13 @@ public class Movie extends Media{
 
     public void setLength(Integer length) {
         this.length = length;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
