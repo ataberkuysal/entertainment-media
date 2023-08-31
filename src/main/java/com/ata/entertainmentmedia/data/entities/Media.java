@@ -22,10 +22,9 @@ public abstract class Media extends BaseEntity {
 
     ////////// CONSTRUCTORS //////////////
 
-    public Media(LocalDate createdDate,
-                 String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId) {
+    public Media(String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId) {
 
-        super(createdDate);
+        super();
         this.name = name;
         this.rating = rating;
         this.publishedDate = publishedDate;

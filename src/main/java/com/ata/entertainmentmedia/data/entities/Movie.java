@@ -25,11 +25,10 @@ public class Movie extends Media{
     ///////////// CONSTRUCTORS //////////////
 
 
-    public Movie(Long id, LocalDate createdDate,
-                 String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                 Long id1, Integer length) {
+    public Movie(String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
+                 Long id, Integer length) {
 
-        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        super(name, rating, publishedDate, thumbnailId, genreId);
         this.id = id;
         this.length = length;
     }

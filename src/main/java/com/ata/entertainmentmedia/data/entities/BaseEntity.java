@@ -16,10 +16,6 @@ public abstract class BaseEntity {
     private LocalDate createdDate = LocalDate.now();
 
     ///////////// CONSTRUCTORS /////////////
-    public BaseEntity(LocalDate createdDate) {
-
-        this.createdDate = createdDate;
-    }
     public BaseEntity() {
 
     }

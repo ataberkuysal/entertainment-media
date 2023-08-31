@@ -1,5 +1,7 @@
 package com.ata.entertainmentmedia.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -12,21 +14,31 @@ public class Episode extends Media implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "episodes_generator")
     @SequenceGenerator(name = "episodes_generator", sequenceName = "episodes_seq", allocationSize = 1)
-    private Long id;
+    @Column(name = "episode_id")
+    private Long episodeId;
 
     private Integer length;
+
+
+    ///////////////////
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "season_id")
+    @JsonBackReference
+    //@JsonIgnore
+    private Season season;
 
 
     //////   CONSTRUCTORS /////////
 
 
-    public Episode(LocalDate createdDate,
-                   String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                   Long id, Integer length) {
+    public Episode(String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
+                   Long episodeId, Integer length, Season season) {
 
-        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
-        this.id = id;
+        super(name, rating, publishedDate, thumbnailId, genreId);
+        this.episodeId = episodeId;
         this.length = length;
+        this.season = season;
     }
 
     public Episode() {
@@ -47,10 +59,15 @@ public class Episode extends Media implements Serializable {
     }
 
     public Long getId() {
-        return id;
+        return episodeId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 }

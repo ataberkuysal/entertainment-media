@@ -1,5 +1,8 @@
 package com.ata.entertainmentmedia.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,30 +11,40 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "seasons", uniqueConstraints={@UniqueConstraint(columnNames={"season_id"})})
+@Table(name = "seasons")
 public class Season extends Media implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seasons_generator")
     @SequenceGenerator(name = "seasons_generator", sequenceName = "seasons_seq", allocationSize = 1)
-    private Long id;
+    @Column(name = "season_id")
+    private Long seasonId;
 
     private Integer episodeCount;
 
+    ///////////////////
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "serie_id")
+    @JsonBackReference
+    //@JsonIgnore
+    private Serie serie;
+
+    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JsonManagedReference
     private List<Episode> episodes;
 
 
     ////////// CONSTRUCTORS //////////
 
 
-    public Season(LocalDate createdDate,
-                  String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
-                  Integer episodeCount, Long seasonId, Serie serie, Long id, List<Episode> episodes) {
+    public Season(String name, Double rating, LocalDate publishedDate, Long thumbnailId, Long genreId,
+                  Integer episodeCount, Long seasonId, Serie serie, List<Episode> episodes) {
 
-        super(createdDate, name, rating, publishedDate, thumbnailId, genreId);
+        super(name, rating, publishedDate, thumbnailId, genreId);
         this.episodeCount = episodeCount;
-        this.id = id;
+        this.seasonId = seasonId;
+        this.serie = serie;
         this.episodes = episodes;
     }
 
@@ -59,11 +72,27 @@ public class Season extends Media implements Serializable {
         this.episodes = episodes;
     }
 
-    public Long getId() {
-        return id;
+    ////
+    public void addEpisode(Episode episode) {
+        episodes.add(episode);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void removeEpisode(Episode episode) {
+        episodes.remove(episode);
     }
+
+    ////
+
+    public Long getId() {
+        return seasonId;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
 }
