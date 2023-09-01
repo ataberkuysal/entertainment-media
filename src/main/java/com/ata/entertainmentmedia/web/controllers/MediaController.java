@@ -42,46 +42,4 @@ public class MediaController {
         movieRepo.save(movie);
     }
 
-
-    /////////// SERIES - SEASONS - EPISODES //////////////
-
-
-    //
-    @GetMapping("/series")
-    public List<Serie> getSeries() {
-        return serieRepo.findAll();
-    }
-
-    @PostMapping("/series/create")
-    public void createSeries(@RequestBody Serie serie) {
-
-        serieRepo.save(serie);
-    }
-
-    //
-    @GetMapping("/seasons")
-    public List<Season> getSeasons() {
-        return seasonRepo.findAll();
-    }
-
-    @PostMapping("/seasons/create")
-    public void createSeasons(@RequestBody Season season) {
-
-        seasonRepo.save(season);
-    }
-
-    //
-    @GetMapping("/episodes")
-    public List<Episode> getEpisodes() {
-        return episodeRepo.findAll();
-    }
-
-    @PostMapping("/episodes/create")
-    public void createEpisodes(@RequestBody Episode episode) {
-
-        episodeRepo.save(episode);
-    }
-
-
-
 }

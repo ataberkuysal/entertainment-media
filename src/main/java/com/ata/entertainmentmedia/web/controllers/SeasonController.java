@@ -24,7 +24,7 @@ public class SeasonController {
     ModelMapper modelMapper;
 
     //GET
-    @GetMapping
+    @GetMapping("")
     public List<Season> getAllSeasons() {
         return seasonService.getAllSeasons();
     }
@@ -35,7 +35,7 @@ public class SeasonController {
     }
 
     //POST
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<SeasonDTO> saveSeason(@RequestBody SeasonDTO seasonDTO) {
         Season seasonRequest = modelMapper.map(seasonDTO, Season.class);
 

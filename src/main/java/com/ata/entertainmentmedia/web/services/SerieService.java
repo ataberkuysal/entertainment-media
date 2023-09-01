@@ -3,15 +3,16 @@ package com.ata.entertainmentmedia.web.services;
 import com.ata.entertainmentmedia.data.entities.Serie;
 import com.ata.entertainmentmedia.data.repos.SerieRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class SerieService {
 
+    @Autowired
     SerieRepo serieRepo;
 
 

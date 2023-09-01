@@ -25,7 +25,7 @@ public class SerieController {
 
     //GET
 
-    @GetMapping
+    @GetMapping("")
     public List<SerieDTO> getAllSeries(){
         return serieService.getAllSeries()
                 .stream().map(serie -> modelMapper.map(serie, SerieDTO.class))

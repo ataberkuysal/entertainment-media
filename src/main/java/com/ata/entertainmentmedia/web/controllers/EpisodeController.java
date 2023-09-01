@@ -25,7 +25,7 @@ public class EpisodeController {
     ModelMapper modelMapper;
 
     //GET
-    @GetMapping
+    @GetMapping("")
     public List<Episode> getAllEpisodes() {
         return episodeService.getAllEpisodes();
     }

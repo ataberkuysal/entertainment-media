@@ -31,7 +31,7 @@ public class Season extends Media implements Serializable {
     private Serie serie;
 
     @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JsonManagedReference
+    @JsonManagedReference
     private List<Episode> episodes;
 
 

@@ -24,9 +24,10 @@ public class Serie extends Media implements Serializable {
 
     /////////////////
 
-    @OneToMany(mappedBy ="serie",cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JoinColumn(name = "serie_id")
-    //@JsonManagedReference
+
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "season_id")
+    @JsonManagedReference
     private List<Season> seasons;
 
 
@@ -80,6 +81,14 @@ public class Serie extends Media implements Serializable {
     }
 
     public void setSeason(List<Season> seasons) {
+        this.seasons = seasons;
+    }
+
+    public List<Season> getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(List<Season> seasons) {
         this.seasons = seasons;
     }
 
