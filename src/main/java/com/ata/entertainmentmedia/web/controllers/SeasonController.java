@@ -21,6 +21,8 @@ public class SeasonController {
     @Autowired
     SeasonService seasonService;
     @Autowired
+    SerieService serieService;
+    @Autowired
     ModelMapper modelMapper;
 
     //GET
@@ -39,8 +41,11 @@ public class SeasonController {
     public ResponseEntity<SeasonDTO> saveSeason(@RequestBody SeasonDTO seasonDTO) {
         Season seasonRequest = modelMapper.map(seasonDTO, Season.class);
 
+        seasonRequest.setSerie(serieService.getSerieById(seasonDTO.getSerieId()));
         seasonService.saveSeason(seasonRequest);
 
+
+        ////BELOW THIS OR AFTER THE save() METHOD OF REPO , NO MORE CHANGES TO THE DATABASE CAN ACTUALLY BE MADE
         SeasonDTO seasonResponse = modelMapper.map(seasonRequest, SeasonDTO.class);
 
         return new ResponseEntity<SeasonDTO>(seasonResponse, HttpStatus.CREATED);
