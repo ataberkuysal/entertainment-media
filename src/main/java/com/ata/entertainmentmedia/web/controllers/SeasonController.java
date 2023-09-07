@@ -1,6 +1,6 @@
 package com.ata.entertainmentmedia.web.controllers;
 
-import com.ata.entertainmentmedia.data.DTOs.SeasonDTO;
+import com.ata.entertainmentmedia.data.DTOs.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.entities.Season;
 import com.ata.entertainmentmedia.web.services.SeasonService;
 import com.ata.entertainmentmedia.web.services.SerieService;
@@ -38,16 +38,16 @@ public class SeasonController {
 
     //POST
     @PostMapping("/save")
-    public ResponseEntity<SeasonDTO> saveSeason(@RequestBody SeasonDTO seasonDTO) {
-        Season seasonRequest = modelMapper.map(seasonDTO, Season.class);
+    public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId) {
+        Season seasonRequest = modelMapper.map(seasonDTOwithSerieId, Season.class);
 
-        seasonRequest.setSerie(serieService.getSerieById(seasonDTO.getSerieId()));
+        seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
         seasonService.saveSeason(seasonRequest);
 
 
         ////BELOW THIS OR AFTER THE save() METHOD OF REPO , NO MORE CHANGES TO THE DATABASE CAN ACTUALLY BE MADE
-        SeasonDTO seasonResponse = modelMapper.map(seasonRequest, SeasonDTO.class);
+        SeasonDTOwithSerieId seasonResponse = modelMapper.map(seasonRequest, SeasonDTOwithSerieId.class);
 
-        return new ResponseEntity<SeasonDTO>(seasonResponse, HttpStatus.CREATED);
+        return new ResponseEntity<SeasonDTOwithSerieId>(seasonResponse, HttpStatus.CREATED);
     }
 }

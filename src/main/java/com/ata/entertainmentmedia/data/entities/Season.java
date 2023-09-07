@@ -26,8 +26,6 @@ public class Season extends Media implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "serie_id")
-    @JsonBackReference
-    //@JsonIgnore
     private Serie serie;
 
     @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)

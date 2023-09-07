@@ -24,10 +24,8 @@ public class Serie extends Media implements Serializable {
 
     /////////////////
 
-
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JoinColumn(name = "season_id")
-    @JsonManagedReference
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Season> seasons;
 
 
