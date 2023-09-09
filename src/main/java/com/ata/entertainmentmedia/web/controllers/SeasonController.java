@@ -1,7 +1,8 @@
 package com.ata.entertainmentmedia.web.controllers;
 
-import com.ata.entertainmentmedia.data.DTOs.SeasonDTOwithSerieId;
+import com.ata.entertainmentmedia.data.dtos.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.entities.Season;
+import com.ata.entertainmentmedia.utils.custom_exceptions.NoSuchSerieIdException;
 import com.ata.entertainmentmedia.web.services.SeasonService;
 import com.ata.entertainmentmedia.web.services.SerieService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +42,11 @@ public class SeasonController {
     public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId) {
         Season seasonRequest = modelMapper.map(seasonDTOwithSerieId, Season.class);
 
-        seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
+        try {
+            seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
+        }catch (RuntimeException e){
+            throw new NoSuchSerieIdException(e);
+        }
         seasonService.saveSeason(seasonRequest);
 
 

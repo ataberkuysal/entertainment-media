@@ -1,8 +1,7 @@
 package com.ata.entertainmentmedia.web.controllers;
 
-import com.ata.entertainmentmedia.data.DTOs.EpisodeDTO;
+import com.ata.entertainmentmedia.data.dtos.EpisodeDTO;
 import com.ata.entertainmentmedia.data.entities.Episode;
-import com.ata.entertainmentmedia.data.repos.EpisodeRepo;
 import com.ata.entertainmentmedia.web.services.EpisodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

@@ -1,4 +1,4 @@
-package com.ata.entertainmentmedia.data.DTOs;
+package com.ata.entertainmentmedia.data.dtos;
 
 import com.ata.entertainmentmedia.data.entities.Season;
 import lombok.Data;
