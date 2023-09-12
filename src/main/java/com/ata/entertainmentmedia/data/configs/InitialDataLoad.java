@@ -27,13 +27,13 @@ public class InitialDataLoad implements Serializable {
 
         return args -> {
 
-            movieRepo.save(new Movie());
+            /*movieRepo.save(new Movie());
 
             serieRepo.save(new Serie());
 
             seasonRepo.save(new Season());
 
-            episodeRepo.save(new Episode());
+            episodeRepo.save(new Episode());*/
 
 
 

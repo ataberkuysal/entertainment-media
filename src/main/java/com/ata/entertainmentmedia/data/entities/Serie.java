@@ -1,5 +1,6 @@
 package com.ata.entertainmentmedia.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -24,8 +25,8 @@ public class Serie extends Media implements Serializable {
 
     /////////////////
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Season> seasons;
 
 

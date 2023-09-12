@@ -2,6 +2,7 @@ package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.entities.Serie;
 import com.ata.entertainmentmedia.data.repos.SerieRepo;
+import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class SerieServiceImpl implements SerieService {
 
     @Override
     public Serie getSerieById(Long id){
-        return serieRepo.findById(id).orElseThrow();
+        return serieRepo.findById(id).orElseThrow(() -> new NoSuchSerieIdException("Given serieId is not present in series or given as null"));
     }
 
     @Override

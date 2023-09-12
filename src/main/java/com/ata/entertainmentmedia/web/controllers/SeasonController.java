@@ -2,7 +2,7 @@ package com.ata.entertainmentmedia.web.controllers;
 
 import com.ata.entertainmentmedia.data.dtos.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.entities.Season;
-import com.ata.entertainmentmedia.utils.custom_exceptions.NoSuchSerieIdException;
+import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdException;
 import com.ata.entertainmentmedia.web.services.SeasonService;
 import com.ata.entertainmentmedia.web.services.SerieService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Slf4j
 @RestController
@@ -39,14 +41,18 @@ public class SeasonController {
 
     //POST
     @PostMapping("/save")
-    public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId) {
+    public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId)
+    /*throws NoSuchSerieIdException*/{
+
         Season seasonRequest = modelMapper.map(seasonDTOwithSerieId, Season.class);
 
-        try {
+        /*try {
             seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
-        }catch (RuntimeException e){
-            throw new NoSuchSerieIdException(e);
-        }
+        }catch (NoSuchElementException e){
+            throw new NoSuchSerieIdException("Given serieId is not present in series or given as null");
+        }*/
+        seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
+
         seasonService.saveSeason(seasonRequest);
 
 
