@@ -20,6 +20,8 @@ public class SeasonDTO {
 
     private Long  seasonId;
     private Integer episodeCount;
+    //
     private Serie serie;
+    //
     private List<Episode> episodes;
 }

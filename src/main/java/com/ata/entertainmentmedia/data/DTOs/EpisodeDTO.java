@@ -18,6 +18,7 @@ public class EpisodeDTO {
 
     private Long episodeId;
     private Integer length;
+    //
     private Season season;
 
 }
