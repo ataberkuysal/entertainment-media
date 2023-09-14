@@ -16,6 +16,8 @@ spring:
 
     generate-ddl: true
 
+    format_sql: true
+
 springdoc:
   api-docs:
     enabled: true

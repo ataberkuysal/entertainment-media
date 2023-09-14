@@ -22,7 +22,7 @@ public class SerieServiceImpl implements SerieService {
 
     @Override
     public Serie getSerieById(Long id){
-        return serieRepo.findById(id).orElseThrow(() -> new NoSuchSerieIdException("Given serieId is not present in series or given as null"));
+        return serieRepo.findById(id).orElseThrow(() -> new NoSuchSerieIdException("Given serieId is not present in series"));
     }
 
     @Override
