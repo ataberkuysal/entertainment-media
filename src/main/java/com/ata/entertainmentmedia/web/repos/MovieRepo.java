@@ -1,4 +1,4 @@
-package com.ata.entertainmentmedia.data.repos;
+package com.ata.entertainmentmedia.web.repos;
 
 import com.ata.entertainmentmedia.data.entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;

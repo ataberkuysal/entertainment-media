@@ -1,7 +1,7 @@
 package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.entities.Movie;
-import com.ata.entertainmentmedia.data.repos.MovieRepo;
+import com.ata.entertainmentmedia.web.repos.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

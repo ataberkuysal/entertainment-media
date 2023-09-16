@@ -1,8 +1,7 @@
 package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.entities.Season;
-import com.ata.entertainmentmedia.data.repos.SeasonRepo;
-import com.ata.entertainmentmedia.data.repos.SerieRepo;
+import com.ata.entertainmentmedia.web.repos.SeasonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +12,6 @@ public class SeasonServiceImpl implements SeasonService {
 
     @Autowired
     SeasonRepo seasonRepo;
-    @Autowired
-    SerieRepo serieRepo;
 
     @Override
     public List<Season> getAllSeasons() {

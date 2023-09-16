@@ -1,7 +1,7 @@
 package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.entities.Episode;
-import com.ata.entertainmentmedia.data.repos.EpisodeRepo;
+import com.ata.entertainmentmedia.web.repos.EpisodeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

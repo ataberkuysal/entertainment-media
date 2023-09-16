@@ -2,6 +2,7 @@ package com.ata.entertainmentmedia.web.controllers;
 
 import com.ata.entertainmentmedia.data.dtos.SerieDTO;
 import com.ata.entertainmentmedia.data.entities.Serie;
+import com.ata.entertainmentmedia.utils.mappers.UpdateSerieMapper;
 import com.ata.entertainmentmedia.web.services.SerieService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.Conditions;
@@ -27,9 +28,6 @@ public class SerieController {
     SerieService serieService;
     @Autowired
     ModelMapper modelMapper;
-
-    @Autowired
-    ModelMapper modelMapperPartial;
 
     //GET
 
@@ -61,34 +59,15 @@ public class SerieController {
         return new ResponseEntity<SerieDTO>(serieResponse, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<SerieDTO> updateSerie(@RequestBody SerieDTO serieDTO, @PathVariable Long id) {
 
-        Serie serieToBeUpdated  = serieService.getSerieById(id);
+        Serie updatedSerie = serieService.updateSerie(serieDTO, id);
 
-/*        List<Field> fields = Arrays.stream(serieToBeUpdated.getClass().getDeclaredFields())
-                .filter(Objects::nonNull).toList()
-                .stream().map(f -> f.getClass().getMethod("get{}",f.getName())).invoke(f);*/
-
-        modelMapperPartial.getConfiguration().setPropertyCondition(Conditions.isNotNull());
-
-        serieToBeUpdated = modelMapperPartial.map(serieDTO, Serie.class);
-
-        serieService.saveSerie(serieToBeUpdated);
-
-        SerieDTO updatedSerieDTO = modelMapper.map(serieToBeUpdated, SerieDTO.class);
+        SerieDTO updatedSerieDTO = modelMapper.map(updatedSerie, SerieDTO.class);
 
         return ResponseEntity.ok().body(updatedSerieDTO);
 
-        /*return serieService.getSerieById(id)
-                .map(address -> {
-                    address.setCity(newAddress.getCity());
-                    address.setPin(newAddress.getPostalCode());
-                    return repository.save(address);
-                })
-                .orElseGet(() -> {
-                    return repository.save(newAddress);
-                });*/
     }
 
 }
