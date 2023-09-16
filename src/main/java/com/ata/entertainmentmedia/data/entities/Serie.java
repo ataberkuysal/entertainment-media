@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -59,11 +60,11 @@ public class Serie extends Media implements Serializable {
 
 
 
-    public Integer getSeason_count() {
+    public Integer getSeasonCount() {
         return seasonCount;
     }
 
-    public void setSeason_count(Integer seasonCount) {
+    public void setSeasonCount(Integer seasonCount) {
         this.seasonCount = seasonCount;
     }
 

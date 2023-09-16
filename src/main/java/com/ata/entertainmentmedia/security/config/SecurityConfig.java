@@ -21,13 +21,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws  Exception{
 
-        //ALLOWS ALL METHODS AT "/auth"
+        //ALLOWS ALL METHODS AT "/auth" and swagger
         //LAMBDA VERSION USED TO MANAGE DEPRECEATED METHODS LIKE and()
         httpSecurity
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests(a ->
                         a
-                                .requestMatchers("/auth/**")
+                                .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

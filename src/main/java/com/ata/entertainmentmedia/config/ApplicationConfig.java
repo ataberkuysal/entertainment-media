@@ -2,6 +2,8 @@ package com.ata.entertainmentmedia.config;
 
 import com.ata.entertainmentmedia.data.repos.UserRepo;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.Conditions;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ApplicationConfig {
 
     private final UserRepo userRepo;
+
+    //SECURITY CONFIGS
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -49,4 +53,18 @@ public class ApplicationConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+    ///
+
+  /*  @Bean
+    public ModelMapper modelMapperPartial() {
+
+        ModelMapper modelMapperPartial = new ModelMapper();
+        modelMapperPartial.getConfiguration().setPropertyCondition(Conditions.isNotNull());
+
+        return  modelMapperPartial;
+
+    }*/
+
 }
