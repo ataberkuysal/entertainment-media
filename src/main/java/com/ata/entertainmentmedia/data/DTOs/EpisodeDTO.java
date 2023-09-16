@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Data
 public class EpisodeDTO {
 
+    private Long episodeId;
+
     private LocalDate createdDate;
 
     private String name;
@@ -16,7 +18,6 @@ public class EpisodeDTO {
     private Long thumbnailId;
     private Long genreId;
 
-    private Long episodeId;
     private Integer length;
     //
     private Season season;

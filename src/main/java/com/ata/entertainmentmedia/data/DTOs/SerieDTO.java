@@ -9,6 +9,8 @@ import java.util.List;
 @Data
 public class SerieDTO {
 
+    private Long serieId;
+
     private LocalDate createdDate;
 
     private String name;
@@ -17,7 +19,6 @@ public class SerieDTO {
     private Long thumbnailId;
     private Long genreId;
 
-    private Long serieId;
     private Integer seasonCount;
     private List<Season> seasons;
     private Integer totalEpisodeCount;
