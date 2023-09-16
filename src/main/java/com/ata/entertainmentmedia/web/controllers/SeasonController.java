@@ -41,16 +41,10 @@ public class SeasonController {
 
     //POST
     @PostMapping("/save")
-    public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId)
-    /*throws NoSuchSerieIdException*/{
+    public ResponseEntity<SeasonDTOwithSerieId> saveSeason(@RequestBody SeasonDTOwithSerieId seasonDTOwithSerieId) {
 
         Season seasonRequest = modelMapper.map(seasonDTOwithSerieId, Season.class);
 
-        /*try {
-            seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
-        }catch (NoSuchElementException e){
-            throw new NoSuchSerieIdException("Given serieId is not present in series or given as null");
-        }*/
         seasonRequest.setSerie(serieService.getSerieById(seasonDTOwithSerieId.getSerieId()));
 
         seasonService.saveSeason(seasonRequest);
@@ -61,4 +55,18 @@ public class SeasonController {
 
         return new ResponseEntity<SeasonDTOwithSerieId>(seasonResponse, HttpStatus.CREATED);
     }
+
+//    @PutMapping("/update/{id}")
+//    Address replaceEmployee(@RequestBody Address newAddress, @PathVariable Long id) {
+//
+//        return repository.findById(id)
+//                .map(address -> {
+//                    address.setCity(newAddress.getCity());
+//                    address.setPin(newAddress.getPostalCode());
+//                    return repository.save(address);
+//                })
+//                .orElseGet(() -> {
+//                    return repository.save(newAddress);
+//                });
+//    }
 }

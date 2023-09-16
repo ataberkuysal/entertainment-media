@@ -1,8 +1,10 @@
 package com.ata.entertainmentmedia.web.controllers;
 
-import com.ata.entertainmentmedia.data.dtos.EpisodeDTO;
+import com.ata.entertainmentmedia.data.dtos.EpisodeDTOwithSeasonId;
 import com.ata.entertainmentmedia.data.entities.Episode;
+import com.ata.entertainmentmedia.data.entities.Season;
 import com.ata.entertainmentmedia.web.services.EpisodeService;
+import com.ata.entertainmentmedia.web.services.SeasonService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class EpisodeController {
     @Autowired
     ModelMapper modelMapper;
 
+    @Autowired
+    private SeasonService seasonService;
+
     //GET
     @GetMapping("")
     public List<Episode> getAllEpisodes() {
@@ -38,14 +43,30 @@ public class EpisodeController {
     //POST
 
     @PostMapping("/save")
-    public ResponseEntity<EpisodeDTO> saveEpisode(@RequestBody EpisodeDTO episodeDTO) {
+    public ResponseEntity<EpisodeDTOwithSeasonId> saveEpisode(@RequestBody EpisodeDTOwithSeasonId episodeDTOwithSeasonId) {
 
-        Episode episodeRequest = modelMapper.map(episodeDTO, Episode.class);
+        Episode episodeRequest = modelMapper.map(episodeDTOwithSeasonId, Episode.class);
+
+        episodeRequest.setSeason(seasonService.getSeasonById(episodeDTOwithSeasonId.getSeasonId()));
 
         episodeService.saveEpisode(episodeRequest);
 
-        EpisodeDTO episodeResponse = modelMapper.map(episodeRequest, EpisodeDTO.class);
+        EpisodeDTOwithSeasonId episodeResponse = modelMapper.map(episodeRequest, EpisodeDTOwithSeasonId.class);
 
-        return new ResponseEntity<EpisodeDTO>(episodeResponse, HttpStatus.CREATED);
+        return new ResponseEntity<EpisodeDTOwithSeasonId>(episodeResponse, HttpStatus.CREATED);
     }
+
+//    @PutMapping("/update/{id}")
+//    Address replaceEmployee(@RequestBody Address newAddress, @PathVariable Long id) {
+//
+//        return repository.findById(id)
+//                .map(address -> {
+//                    address.setCity(newAddress.getCity());
+//                    address.setPin(newAddress.getPostalCode());
+//                    return repository.save(address);
+//                })
+//                .orElseGet(() -> {
+//                    return repository.save(newAddress);
+//                });
+//    }
 }

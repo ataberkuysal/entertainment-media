@@ -27,6 +27,8 @@ public class SerieController {
 
     @GetMapping("")
     public List<SerieDTO> getAllSeries(){
+
+        //return serieService.getAllSeries();
         return serieService.getAllSeries()
                 .stream().map(serie -> modelMapper.map(serie, SerieDTO.class))
                 .collect(Collectors.toList());
@@ -50,4 +52,18 @@ public class SerieController {
 
         return new ResponseEntity<SerieDTO>(serieResponse, HttpStatus.CREATED);
     }
+
+//    @PutMapping("/update/{id}")
+//    Address replaceEmployee(@RequestBody Address newAddress, @PathVariable Long id) {
+//
+//        return repository.findById(id)
+//                .map(address -> {
+//                    address.setCity(newAddress.getCity());
+//                    address.setPin(newAddress.getPostalCode());
+//                    return repository.save(address);
+//                })
+//                .orElseGet(() -> {
+//                    return repository.save(newAddress);
+//                });
+//    }
 }

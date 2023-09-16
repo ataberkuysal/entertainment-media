@@ -27,3 +27,12 @@ server:
   error:
     whitelabel:
       enabled: false
+
+#logging:
+#  level:
+#    org:
+#      springframework.web: INFO
+#      hibernate: ERROR
+#
+#    net:
+#      guides: DEBUG
