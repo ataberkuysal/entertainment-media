@@ -1,5 +1,6 @@
 package com.ata.entertainmentmedia.web.controllers;
 
+import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
 import com.ata.entertainmentmedia.data.dtos.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.dtos.SerieDTO;
 import com.ata.entertainmentmedia.data.entities.Season;
@@ -59,34 +60,14 @@ public class SeasonController {
         return new ResponseEntity<SeasonDTOwithSerieId>(seasonResponse, HttpStatus.CREATED);
     }
 
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<SeasonDTO> updateSeason(@RequestBody SeasonDTO seasonDTO, @PathVariable Long id) {
 
-    /*@PutMapping("/update/{id}")
-    public ResponseEntity<SerieDTO> updateSerie(@RequestBody SerieDTO serieDTO, @PathVariable Long id) {
+        Season updatedSeason = seasonService.updateSeason(seasonDTO, id);
 
-        Serie serieToBeUpdated  = serieService.getSerieById(id);
+        SeasonDTO updatedSeasonDTO = modelMapper.map(updatedSeason, SeasonDTO.class);
 
-*//*        List<Field> fields = Arrays.stream(serieToBeUpdated.getClass().getDeclaredFields())
-                .filter(Objects::nonNull).toList()
-                .stream().map(f -> f.getClass().getMethod("get{}",f.getName())).invoke(f);*//*
+        return ResponseEntity.ok().body(updatedSeasonDTO);
 
-        modelMapperPartial.getConfiguration().setPropertyCondition(Conditions.isNotNull());
-
-        serieToBeUpdated = modelMapperPartial.map(serieDTO, Serie.class);
-
-        serieService.saveSerie(serieToBeUpdated);
-
-        SerieDTO updatedSerieDTO = modelMapper.map(serieToBeUpdated, SerieDTO.class);
-
-        return ResponseEntity.ok().body(updatedSerieDTO);
-
-        *//*return serieService.getSerieById(id)
-                .map(address -> {
-                    address.setCity(newAddress.getCity());
-                    address.setPin(newAddress.getPostalCode());
-                    return repository.save(address);
-                })
-                .orElseGet(() -> {
-                    return repository.save(newAddress);
-                });*//*
-    }*/
+    }
 }

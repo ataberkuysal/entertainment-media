@@ -39,7 +39,7 @@ public class SerieServiceImpl implements SerieService {
     public Serie updateSerie(SerieDTO serieDTO, Long id) {
         Serie serieToBeUpdated = getSerieById(id);
         updateSerieMapper.updateSerieFromDTO(serieDTO, serieToBeUpdated);
-        return serieRepo.save(serieToBeUpdated);
+        return saveSerie(serieToBeUpdated);
     }
 
 }

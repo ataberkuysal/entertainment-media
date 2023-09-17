@@ -1,5 +1,7 @@
 package com.ata.entertainmentmedia.web.services;
 
+import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
+import com.ata.entertainmentmedia.data.dtos.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.entities.Season;
 
 import java.util.List;
@@ -25,4 +27,6 @@ public interface SeasonService {
      * @return
      */
     Season saveSeason(Season season);
+
+    Season updateSeason(SeasonDTO seasonDTO, Long id);
 }

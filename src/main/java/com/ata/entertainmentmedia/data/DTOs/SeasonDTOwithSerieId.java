@@ -21,8 +21,8 @@ public class SeasonDTOwithSerieId {
     private Long genreId;
 
     private Integer episodeCount;
-    //private Serie serie;
     //
+    // private Serie serie;
     private Long serieId;
     //
     private List<Episode> episodes;

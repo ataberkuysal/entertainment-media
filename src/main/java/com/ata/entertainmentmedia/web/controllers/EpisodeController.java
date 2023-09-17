@@ -1,6 +1,8 @@
 package com.ata.entertainmentmedia.web.controllers;
 
+import com.ata.entertainmentmedia.data.dtos.EpisodeDTO;
 import com.ata.entertainmentmedia.data.dtos.EpisodeDTOwithSeasonId;
+import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
 import com.ata.entertainmentmedia.data.entities.Episode;
 import com.ata.entertainmentmedia.data.entities.Season;
 import com.ata.entertainmentmedia.web.services.EpisodeService;
@@ -56,17 +58,14 @@ public class EpisodeController {
         return new ResponseEntity<EpisodeDTOwithSeasonId>(episodeResponse, HttpStatus.CREATED);
     }
 
-//    @PutMapping("/update/{id}")
-//    Address replaceEmployee(@RequestBody Address newAddress, @PathVariable Long id) {
-//
-//        return repository.findById(id)
-//                .map(address -> {
-//                    address.setCity(newAddress.getCity());
-//                    address.setPin(newAddress.getPostalCode());
-//                    return repository.save(address);
-//                })
-//                .orElseGet(() -> {
-//                    return repository.save(newAddress);
-//                });
-//    }
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<EpisodeDTO> updateEpisode(@RequestBody EpisodeDTO episodeDTO, @PathVariable Long id) {
+
+        Episode updatedEpisode = episodeService.updateEpisode(episodeDTO, id);
+
+        EpisodeDTO updatedEpisodeDTO = modelMapper.map(updatedEpisode, EpisodeDTO.class);
+
+        return ResponseEntity.ok().body(updatedEpisodeDTO);
+
+    }
 }
