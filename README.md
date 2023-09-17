@@ -4,6 +4,7 @@ A Web App For Any Type Of Entertainment Media
 
 
 ## Postman Collection for Requests
+**! Recent Update of Postman requires an account if you want to fork or make changes to the requests from the Collection itself !**
 ### Link to the Collection
 https://www.postman.com/avionics-architect-34360217/workspace/workspace1/collection/25215258-f4988a25-7bd1-46b8-a696-ae8b3334ad11?action=share&creator=25215258
 ### Alternatively, Fork The Collection via Button Below
