@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService{
@@ -24,6 +26,11 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
+
+    @Override
+    public List<User> getUsers() {
+        return repo.findAll();
+    }
 
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
