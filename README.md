@@ -77,8 +77,13 @@ http://localhost:8080/swagger-ui/index.html#/season-entity-controller/postCollec
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/2454097c-8395-4ee9-9236-0cd6938084f4)
 
 
-### 5 -> Repeat by using the seasonId to create Episode 1 and Episode 2 for Season 1 and We Are Done!:
+### 5 -> Repeat by using the seasonId to create Episode 1 and Episode 2 for Season 1 and We Are Done! ↓
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/88d71027-0e20-4775-ae17-dd25ac3de998)
+
+
+## OneToMany / ManyToOne bidirectional relationship between Series and its child entities can be seen below ↓
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/5dc060a3-0fd3-4f76-a47c-a898043cb77a)
+
 
 
 
