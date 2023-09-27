@@ -67,10 +67,10 @@ http://localhost:8080/swagger-ui/index.html#/season-entity-controller/postCollec
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/56fa02b7-e1e4-49f8-bbe3-34975c6c693f)
 
 
-### 4 -> Create a Season for the Serie we just created by giving its serieId and use GET Series to fetch the Series' we created to see the results.
+### 4 -> Create a Season for the Serie we just created by giving its serieId and use the Request "GET Series" to fetch the Series' we've created  thus far to see the results.
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/ac96c374-53ce-4486-9131-59ba011f0a0f)
 
-#### We forgot to give it a name. Let's give it a name ("Season 1") and overall rating by using the "PATCH Update a Specific Season" Request
+####  *We forgot to give it a name. Let's give it a name ("Season 1") and overall rating by using the "PATCH Update a Specific Season" Request*
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/9a60704d-6d17-44df-87f6-6e0a2f73e15d)
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/2454097c-8395-4ee9-9236-0cd6938084f4)
 
