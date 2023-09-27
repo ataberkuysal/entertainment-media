@@ -31,6 +31,7 @@ git clone https://github.com/ataberkuysal/entertainment-media.git
 mvn spring-boot: run
 ```
 
+#### *Runs on localhost:8080
 
 
 #  Use the Postman Collection below to start making requests
