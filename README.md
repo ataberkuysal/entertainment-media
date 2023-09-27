@@ -48,13 +48,11 @@ https://www.postman.com/avionics-architect-34360217/workspace/workspace1/collect
 http://localhost:8080/swagger-ui/index.html#/season-entity-controller/postCollectionResource-season-post
 
 # Example on how to use Entertainment Media ↓
-## Lets Create "GameOfThrones" as well as its "Season 1" and Episode 1 and 2.
-### Follow the steps below ↓
-![1](https://github.com/ataberkuysal/entertainment-media/assets/54504620/91eb0357-b0b3-4bdb-b92b-1a2235bc16c9)
+## Lets Create "GameOfThrones" as well as its "Season 1" and its Pilot Episode.
+### We will follow the requests 1 to 5 in order as marked below ↓
 
 ## First, Make sure the Authentication is set correctly by following the description and using the first two requests "1" and "2"
-![Adsız tasarım](https://github.com/ataberkuysal/entertainment-media/assets/54504620/2407c62f-f57f-4461-8aac-964d0e239d04)
-
+![1](https://github.com/ataberkuysal/entertainment-media/assets/54504620/91eb0357-b0b3-4bdb-b92b-1a2235bc16c9)
 
 ### 1 -> Register the User
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/d114fcdc-9f52-41c6-8bec-f6bc16b973e7)
@@ -62,6 +60,25 @@ http://localhost:8080/swagger-ui/index.html#/season-entity-controller/postCollec
 ### 2 -> Authenticate the said User and copy the Token in the response and paste it to EnvMedia Collection Parent Authorization Tab
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/efc8fce7-d7d1-41a6-b45c-2427ee23e442)
 ![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/0960aaea-961d-4bf2-a2c7-5713736097a9)
+![Adsız tasarım](https://github.com/ataberkuysal/entertainment-media/assets/54504620/2407c62f-f57f-4461-8aac-964d0e239d04)
+
+## We can now start creating our entities.
+### 3 -> Create a Serie using the request "POST Serie". This will respond with the created Serie. Copy its "serieId" value.
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/56fa02b7-e1e4-49f8-bbe3-34975c6c693f)
+
+
+### 4 -> Create a Season for the Serie we just created by giving its serieId and use GET Series to fetch the Series' we created to see the results.
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/ac96c374-53ce-4486-9131-59ba011f0a0f)
+
+#### We forgot to give it a name. Let's give it a name ("Season 1") and overall rating by using the "PATCH Update a Specific Season" Request
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/9a60704d-6d17-44df-87f6-6e0a2f73e15d)
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/2454097c-8395-4ee9-9236-0cd6938084f4)
+
+
+### 5 -> Repeat by using the seasonId to create Episode 1 and Episode 2 for Season 1 and We Are Done!:
+![image](https://github.com/ataberkuysal/entertainment-media/assets/54504620/88d71027-0e20-4775-ae17-dd25ac3de998)
+
+
 
 
 
