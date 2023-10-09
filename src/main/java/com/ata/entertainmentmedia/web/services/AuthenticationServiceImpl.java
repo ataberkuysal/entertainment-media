@@ -3,6 +3,7 @@ package com.ata.entertainmentmedia.web.services;
 import com.ata.entertainmentmedia.data.AuthenticationRequest;
 import com.ata.entertainmentmedia.data.AuthenticationResponse;
 import com.ata.entertainmentmedia.data.RegisterRequest;
+import com.ata.entertainmentmedia.utils.logging.Log;
 import com.ata.entertainmentmedia.web.repos.UserRepo;
 import com.ata.entertainmentmedia.security.config.JwtService;
 import com.ata.entertainmentmedia.security.user.Role;
@@ -28,11 +29,13 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final AuthenticationManager authenticationManager;
 
     @Override
+    @Log
     public List<User> getUsers() {
         return repo.findAll();
     }
 
     @Override
+    @Log
     public AuthenticationResponse register(RegisterRequest request) {
 
         var user = User.builder()
@@ -53,6 +56,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     }
 
     @Override
+    @Log
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
 
         //Checks auth of user , else throws exception

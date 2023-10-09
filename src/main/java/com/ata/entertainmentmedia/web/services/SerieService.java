@@ -8,15 +8,11 @@ import java.util.List;
 
 public interface SerieService {
 
-    @Log
     List<Serie> getAllSeries();
 
-    @Log
     Serie getSerieById(Long id);
 
-    @Log
     Serie saveSerie(Serie serie);
 
-    @Log
     Serie updateSerie(SerieDTO serieDTO, Long id);
 }

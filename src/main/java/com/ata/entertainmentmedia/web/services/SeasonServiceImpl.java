@@ -2,6 +2,7 @@ package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
 import com.ata.entertainmentmedia.data.entities.Season;
+import com.ata.entertainmentmedia.utils.logging.Log;
 import com.ata.entertainmentmedia.utils.mappers.UpdateSeasonMapper;
 import com.ata.entertainmentmedia.web.repos.SeasonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +20,19 @@ public class SeasonServiceImpl implements SeasonService {
     UpdateSeasonMapper updateSeasonMapper;
 
     @Override
+    @Log
     public List<Season> getAllSeasons() {
         return seasonRepo.findAll();
     }
 
     @Override
+    @Log
     public Season getSeasonById(Long id) {
         return seasonRepo.findById(id).orElseThrow();
     }
 
     @Override
+    @Log
     public Season saveSeason(Season season) {
 //        Season seasonWithNoFK = season;
 //        seasonWithNoFK.setSerie(serieRepo.findById(season.getSerie().getId()).get());
@@ -36,6 +40,7 @@ public class SeasonServiceImpl implements SeasonService {
     }
 
     @Override
+    @Log
     public Season updateSeason(SeasonDTO seasonDTO, Long id) {
         Season seasonToBeUpdated = getSeasonById(id);
         updateSeasonMapper.updateSeasonFromDTO(seasonDTO, seasonToBeUpdated);

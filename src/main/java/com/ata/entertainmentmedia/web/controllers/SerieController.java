@@ -2,6 +2,7 @@ package com.ata.entertainmentmedia.web.controllers;
 
 import com.ata.entertainmentmedia.data.dtos.SerieDTO;
 import com.ata.entertainmentmedia.data.entities.Serie;
+import com.ata.entertainmentmedia.utils.logging.Log;
 import com.ata.entertainmentmedia.utils.mappers.UpdateSerieMapper;
 import com.ata.entertainmentmedia.web.services.SerieService;
 import lombok.extern.slf4j.Slf4j;

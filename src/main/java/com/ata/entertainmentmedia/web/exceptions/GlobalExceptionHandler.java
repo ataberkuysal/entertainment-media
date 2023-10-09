@@ -1,5 +1,6 @@
 package com.ata.entertainmentmedia.web.exceptions;
 
+import com.ata.entertainmentmedia.utils.logging.Log;
 import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdBody;
 import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdException;
 import org.springframework.http.*;
@@ -28,6 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }*/
 
     @ExceptionHandler(value = {NoSuchSerieIdException.class})
+    @Log
     public ResponseEntity<Object> handleNoSuchSerieIdException(NoSuchSerieIdException e) {
 
         HttpStatus badRequest = HttpStatus.BAD_REQUEST;

@@ -16,8 +16,8 @@ import java.util.Map;
 @Component
 public class GlobalMethodLogger {
 
-    @Around("@annotation(log)")
-    public Object logMethod(ProceedingJoinPoint joinPoint, Log log) throws Throwable {
+    @Around("@annotation(Log)")
+    public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
         Logger logger = LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringType());
         String methodName = joinPoint.getSignature().getName();
         Map<String, Object> parameters = obtainParameters(joinPoint);
