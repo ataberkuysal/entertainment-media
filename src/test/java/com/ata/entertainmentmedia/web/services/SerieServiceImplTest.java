@@ -1,30 +1,45 @@
 package com.ata.entertainmentmedia.web.services;
 
-import com.ata.entertainmentmedia.data.dtos.SerieDTO;
-import com.ata.entertainmentmedia.data.entities.Serie;
-import com.ata.entertainmentmedia.utils.mappers.UpdateSerieMapper;
-import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdException;
 import com.ata.entertainmentmedia.web.repos.SerieRepo;
-import org.junit.Rule;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import static org.assertj.core.api.BDDAssumptions.given;
+import static org.mockito.Mockito.verify;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class) //inits mocks etc.
 class SerieServiceImplTest {
 
+    @Mock
+    private SerieRepo repo;
+    @Mock
+    private SerieService underTestInteface;
+
     @InjectMocks
+    private SerieServiceImpl underTest;
+
+    @Test
+    public void testGetAllSeries() {
+        // when
+        underTest.getAllSeries();
+
+        // then
+        verify(repo).findAll();
+    }
+
+    @Test
+    public void testGetSerieById() {
+        // when
+        Long serieId = 1L;
+        given(underTest.getSerieById(serieId))
+                .willReturn()
+    }
+
+
+  /*  @InjectMocks
     private SerieServiceImpl serieService;
 
     @Mock
@@ -97,7 +112,7 @@ class SerieServiceImplTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    /*@Test
+    *//*@Test
     public void testUpdateSerie() throws NoSuchSerieIdException {
 
         //  Setup
@@ -127,7 +142,7 @@ class SerieServiceImplTest {
 
         //  Assert
         assertThrows(NoSuchSerieIdException.class, () -> serieService.getSerieById(serieId));
-    }*/
-
+    }*//*
+*/
     
 }

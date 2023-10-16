@@ -2,9 +2,7 @@ package com.ata.entertainmentmedia.web.controllers;
 
 import com.ata.entertainmentmedia.data.dtos.EpisodeDTO;
 import com.ata.entertainmentmedia.data.dtos.EpisodeDTOwithSeasonId;
-import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
 import com.ata.entertainmentmedia.data.entities.Episode;
-import com.ata.entertainmentmedia.data.entities.Season;
 import com.ata.entertainmentmedia.web.services.EpisodeService;
 import com.ata.entertainmentmedia.web.services.SeasonService;
 import lombok.extern.slf4j.Slf4j;

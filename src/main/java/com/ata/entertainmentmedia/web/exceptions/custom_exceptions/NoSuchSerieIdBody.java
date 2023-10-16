@@ -1,6 +1,5 @@
 package com.ata.entertainmentmedia.web.exceptions.custom_exceptions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;

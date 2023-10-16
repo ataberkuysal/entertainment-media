@@ -1,10 +1,6 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
 

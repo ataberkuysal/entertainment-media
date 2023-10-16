@@ -2,22 +2,15 @@ package com.ata.entertainmentmedia.web.controllers;
 
 import com.ata.entertainmentmedia.data.dtos.SerieDTO;
 import com.ata.entertainmentmedia.data.entities.Serie;
-import com.ata.entertainmentmedia.utils.logging.Log;
-import com.ata.entertainmentmedia.utils.mappers.UpdateSerieMapper;
 import com.ata.entertainmentmedia.web.services.SerieService;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j

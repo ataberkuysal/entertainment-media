@@ -1,7 +1,6 @@
 package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.dtos.SeasonDTO;
-import com.ata.entertainmentmedia.data.dtos.SeasonDTOwithSerieId;
 import com.ata.entertainmentmedia.data.entities.Season;
 
 import java.util.List;

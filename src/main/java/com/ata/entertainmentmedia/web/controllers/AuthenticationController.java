@@ -6,7 +6,6 @@ import com.ata.entertainmentmedia.data.RegisterRequest;
 import com.ata.entertainmentmedia.security.user.User;
 import com.ata.entertainmentmedia.web.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

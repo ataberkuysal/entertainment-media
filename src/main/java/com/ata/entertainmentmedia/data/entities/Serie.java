@@ -1,10 +1,7 @@
 package com.ata.entertainmentmedia.data.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Builder;
 
 import java.io.Serializable;
 import java.time.LocalDate;

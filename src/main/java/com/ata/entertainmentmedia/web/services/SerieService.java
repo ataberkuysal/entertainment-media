@@ -2,7 +2,6 @@ package com.ata.entertainmentmedia.web.services;
 
 import com.ata.entertainmentmedia.data.dtos.SerieDTO;
 import com.ata.entertainmentmedia.data.entities.Serie;
-import com.ata.entertainmentmedia.utils.logging.Log;
 
 import java.util.List;
 
