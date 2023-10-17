@@ -1,22 +1,37 @@
 package com.ata.entertainmentmedia.web.services;
 
+import com.ata.entertainmentmedia.data.entities.Serie;
+import com.ata.entertainmentmedia.web.exceptions.custom_exceptions.NoSuchSerieIdException;
 import com.ata.entertainmentmedia.web.repos.SerieRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.BDDAssumptions.given;
+import java.util.Optional;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import java.lang.reflect.Field;
+
 
 @ExtendWith(MockitoExtension.class) //inits mocks etc.
 class SerieServiceImplTest {
 
     @Mock
     private SerieRepo repo;
+
     @Mock
     private SerieService underTestInteface;
+
+    /*@Mock
+    private Serie serie;*/
 
     @InjectMocks
     private SerieServiceImpl underTest;
@@ -31,11 +46,43 @@ class SerieServiceImplTest {
     }
 
     @Test
-    public void testGetSerieById() {
-        // when
-        Long serieId = 1L;
-        given(underTest.getSerieById(serieId))
-                .willReturn()
+    public void testGetSerieById() throws NoSuchFieldException, IllegalAccessException {
+        // given
+        Long expectedSerieId = 1L;
+        Serie expectedSerie = new Serie();
+
+        // manipulate
+
+        given(repo.findById(expectedSerieId)).willReturn(Optional.of(expectedSerie));
+
+        Field idField = Serie.class.getDeclaredField("serieId");
+        idField.setAccessible(true);
+        idField.set(expectedSerie, expectedSerieId);
+
+        // then
+
+
+        Serie serieTested = underTest.getSerieById(expectedSerieId);
+
+
+
+        assertThat(serieTested.getClass()).isEqualTo(expectedSerie.getClass());
+        assertThat(serieTested.getId()).isEqualTo(expectedSerieId);
+    }
+
+    @Test
+    public void testGetSerieByIdThrow() {
+        // Given
+        Long expectedSerieId = 1L;
+
+        // Mock the behavior of SerieRepository
+        Mockito.when(repo.findById(expectedSerieId)).thenReturn(Optional.empty());
+
+        // Act and Assert
+        assertThatExceptionOfType(NoSuchSerieIdException.class)
+                .isThrownBy(() -> underTest.getSerieById(expectedSerieId))
+                .withMessage("Given serieId is not present in series");
+
     }
 
 
