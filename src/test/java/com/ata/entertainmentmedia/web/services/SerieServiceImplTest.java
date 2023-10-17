@@ -16,8 +16,8 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+
 import java.lang.reflect.Field;
 
 
@@ -47,19 +47,19 @@ class SerieServiceImplTest {
 
     @Test
     public void testGetSerieById() throws NoSuchFieldException, IllegalAccessException {
-        // given
+        // Given
         Long expectedSerieId = 1L;
         Serie expectedSerie = new Serie();
 
-        // manipulate
+        // Manipulate
 
-        given(repo.findById(expectedSerieId)).willReturn(Optional.of(expectedSerie));
+        when(repo.findById(expectedSerieId)).thenReturn(Optional.of(expectedSerie));
 
         Field idField = Serie.class.getDeclaredField("serieId");
         idField.setAccessible(true);
         idField.set(expectedSerie, expectedSerieId);
 
-        // then
+        // Call and Assert
 
 
         Serie serieTested = underTest.getSerieById(expectedSerieId);
@@ -75,10 +75,11 @@ class SerieServiceImplTest {
         // Given
         Long expectedSerieId = 1L;
 
-        // Mock the behavior of SerieRepository
-        Mockito.when(repo.findById(expectedSerieId)).thenReturn(Optional.empty());
+        // Mock and Manipulate
+        when(repo.findById(expectedSerieId)).thenReturn(Optional.empty());
 
-        // Act and Assert
+        // Call and Assert
+        // Call is made inside isThrownBy()
         assertThatExceptionOfType(NoSuchSerieIdException.class)
                 .isThrownBy(() -> underTest.getSerieById(expectedSerieId))
                 .withMessage("Given serieId is not present in series");
