@@ -15,7 +15,7 @@ A Web App For Any Type Of Entertainment Media
 - AOP(Exception Handling and Method Logging)
 
 ## How to Start
-### Prerequisities
+### Prerequisites
 ```
 - JDK 19
 - Maven
